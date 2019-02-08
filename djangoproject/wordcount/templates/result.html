@@ -1,13 +1,56 @@
-<h1>당신이 입력한 테스트는 {{total}} 로 구성되어 있습니다.</h1>
+<!DOCTYPE html>
+<html lang="ko">
 
-<a href = "{% url 'home' %}"> 다시 하기 </a>
-<br>
-<h2> 입력한 텍스트 : </h2>
-{{full}}
+<head>
+    <script  
+        src="http://code.jquery.com/jquery-3.3.1.js"  
+        integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="  
+        crossorigin="anonymous">
+    </script>        
+        
+    <!-- 합쳐지고 최소화된 최신 CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 
-<h2> 단어 카운트 : </h2>
-{% for word, howmany in dictionary %}
+    <!-- 부가적인 테마 -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
 
-{{word}} : {{howmany}}
-<br>
-{%endfor%}
+    <!-- 합쳐지고 최소화된 최신 자바스크립트 -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    <meta charset="utf-8">
+    <title>WordCount WebPage</title>
+</head>
+
+<body>
+    <ul class="nav nav-tabs">
+        <li role="presentation"><a href="#">Home</a></li>
+        <li role="presentation"><a href="#">about</a></li>
+        <li role="presentation" class="active"><a href="#">result</a></li>
+    </ul>
+    <h1>당신이 입력한 테스트는 {{total}} 로 구성되어 있습니다.</h1>
+    <a href="{%url 'home'%}">
+            <span class="glyphicon glyphicon-repeat" aria-hidden="true"></span>
+            다시하기
+    </a>
+    <br>
+    <h2> 입력한 텍스트 : </h2>
+    {{full}}
+
+    <h2> 단어 카운트 : </h2>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>글자</th>
+                <th>개수</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for word, howmany in dictionary %}
+            <tr>
+                <th>{{word}}</th>
+                <th>{{howmany}}</th>
+            </tr>
+            {%endfor%}
+        </tbody>
+    </table>
+    <br>
+</body>
